@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ส่องของเสีย EEC · เปิดข้อมูลของเสียอุตสาหกรรมภาคตะวันออก</title>
+<link href="https://fonts.googleapis.com/css2?family=Anuphan:wght@400;500;600;700&family=Sora:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF1FB;--card:#fff;--ink:#0B1030;--soft:#5B6385;--line:#DCE1F2;--acc:#2F5BFF;--vio:#7C4DFF;--lime:#3DE0FF;--a:#FF5C7A;--p:#FFB020;--c:#14C8A8;--hero1:#050A26;--hero2:#17237A;--hi:rgba(255,255,255,.8);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070B1F;--card:#0F1638;--ink:#EAEEFF;--soft:#97A0CC;--line:#222B5E;--acc:#7C9BFF;--vio:#A98BFF;--hero1:#040719;--hero2:#101A6B;--hi:rgba(255,255,255,.06)}}
+:root[data-theme="dark"]{--bg:#070B1F;--card:#0F1638;--ink:#EAEEFF;--soft:#97A0CC;--line:#222B5E;--acc:#7C9BFF;--vio:#A98BFF;--hero1:#040719;--hero2:#101A6B;--hi:rgba(255,255,255,.06)}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 'Anuphan',sans-serif}
+.w{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{margin:0;line-height:1.25;font-weight:700}
+/* hero */
+.hero{background:radial-gradient(900px 400px at 85% 0,color-mix(in srgb,var(--acc) 40%,transparent),transparent 60%),linear-gradient(160deg,var(--hero1),var(--hero2));color:#EEF2FF;padding:48px 0 64px;position:relative;overflow:hidden}
+.hero .w{display:grid;grid-template-columns:1.25fr 1fr;gap:32px;align-items:center}
+.pill{display:inline-block;font-size:13px;padding:3px 14px;border-radius:99px;background:#ffffff18;border:1px solid #ffffff30;margin-bottom:18px}
+.hero h1{text-wrap:balance;word-break:keep-all;font-size:clamp(28px,4.6vw,46px);letter-spacing:-.5px}
+.hero p{color:#AEB9F0;max-width:32em;margin:16px 0 0}
+.big{text-align:center;position:relative}
+.big svg{width:100%;max-width:340px;display:block;margin:0 auto}
+.big b{position:absolute;left:0;right:0;top:50%;transform:translateY(-58%);font-size:clamp(56px,9vw,92px);line-height:1;color:var(--lime);font-weight:700}
+.big small{position:absolute;left:0;right:0;top:50%;transform:translateY(46px);color:#AEB9F0;font-size:14px}
+.priv{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;font-size:13px;color:#AEB9F0}
+.priv span{padding:2px 12px;border-radius:8px;background:#00000028;text-decoration:line-through;text-decoration-color:#ffffff55}
+/* filter */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-top:-28px;border-radius:22px 22px 0 0}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:14px 0;scrollbar-width:none}
+.chips button{flex:none;font:500 14px 'Anuphan';padding:6px 16px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.chips button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+/* layout */
+main{padding:24px 0 8px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;min-width:0}
+.s3{grid-column:span 3}.s4{grid-column:span 4}.s5{grid-column:span 5}.s6{grid-column:span 6}.s7{grid-column:span 7}.s8{grid-column:span 8}.s12{grid-column:span 12}
+h2{font-size:19px}.sub{color:var(--soft);font-size:14px;margin:2px 0 16px}
+.k b{display:block;font-size:40px;line-height:1.1;font-weight:700}.k span{color:var(--soft);font-size:14px}
+.k i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.row{display:grid;grid-template-columns:92px 1fr 40px;gap:10px;align-items:center;margin:9px 0;font-size:14px}
+.row .t{height:20px;border-radius:6px;display:flex;overflow:hidden;background:var(--line)}
+.row .t i{display:block;height:100%}
+.row.dim{opacity:.35}
+.row b{text-align:right;font-weight:600}
+.leg{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--soft);margin-top:12px}
+.leg em{font-style:normal}.leg em::before{content:'';display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--k);margin-right:6px}
+svg text{font-family:'Anuphan',sans-serif;fill:var(--soft);font-size:11px}
+.dn{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.dn svg{width:150px;flex:none}
+.dn ul{list-style:none;margin:0;padding:0;font-size:14px;flex:1;min-width:140px}
+.dn li{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--line)}
+.hm{overflow-x:auto}
+.hmg{display:grid;grid-template-columns:96px repeat(5,minmax(70px,1fr));gap:4px;min-width:520px;font-size:13px}
+.hmg div{padding:7px 4px;text-align:center;border-radius:8px}
+.hmg .h{color:var(--soft);font-size:12px;padding:0 2px 4px}
+.hmg .n{text-align:left;color:var(--ink);padding-left:2px}
+.hmg .z{color:var(--soft)}
+.mini{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.mini div{background:var(--bg);border-radius:12px;padding:10px 14px;font-size:13px;color:var(--soft)}.mini b{display:block;color:var(--ink);font-size:22px}
+details{border-bottom:1px solid var(--line);padding:12px 0}summary{cursor:pointer;font-weight:600}details p{margin:8px 0 0;color:var(--soft);font-size:15px}
+ol.steps{margin:0;padding-left:20px;color:var(--soft);font-size:15px}ol.steps li{margin:6px 0}
+.note{margin:20px 0 0;font-size:14px;color:var(--soft);padding:14px 18px;border-radius:14px;border:1px dashed var(--line)}
+footer{padding:28px 0 48px;font-size:13px;color:var(--soft)}
+@media(max-width:860px){.hero .w{grid-template-columns:1fr}.big{order:-1;margin-bottom:-20px}.big svg{max-width:240px}.s3{grid-column:span 6}.s4,.s5,.s6,.s7,.s8{grid-column:span 12}}
+@media(max-width:480px){.s3{grid-column:span 12}.row{grid-template-columns:76px 1fr 32px}}
+
+body{background:radial-gradient(1000px 500px at 100% 380px,color-mix(in srgb,var(--acc) 9%,transparent),transparent 60%),radial-gradient(800px 400px at 0 900px,color-mix(in srgb,var(--lime) 12%,transparent),transparent 60%),var(--bg)}
+.hero{padding:56px 0 84px}
+.hero h1{background:linear-gradient(180deg,#fff,#B9CCFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero::after{content:'';position:absolute;inset:auto 0 0 0;height:1px;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--lime) 40%,transparent),transparent)}
+.split{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.split div{display:flex;align-items:center;gap:10px;padding:10px 16px;border-radius:16px;background:#ffffff12;border:1px solid #ffffff24;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.split i{width:10px;height:10px;border-radius:50%}
+.split b{font-size:26px;line-height:1;color:#fff}
+.split span{font-size:13px;color:#AEB9F0;line-height:1.3}
+.big svg{filter:drop-shadow(0 0 24px color-mix(in srgb,var(--lime) 20%,transparent))}
+.card{border-radius:24px;box-shadow:0 14px 34px -22px rgba(20,30,110,.35)}
+h2{display:flex;align-items:center;gap:10px}
+h2::before{content:'';width:5px;height:20px;border-radius:4px;background:linear-gradient(var(--acc),var(--lime))}
+.k{position:relative;overflow:hidden;transition:transform .2s}
+.k:hover{transform:translateY(-3px)}
+.k::after{content:'';position:absolute;right:-26px;top:-26px;width:96px;height:96px;border-radius:50%;background:var(--kc,var(--acc));opacity:.2}
+.k b{font-size:44px;letter-spacing:-1px}
+.row .t{border-radius:99px;gap:2px;background:color-mix(in srgb,var(--line) 70%,transparent)}
+.row .t i{border-radius:99px}
+.chips button{transition:all .15s}.chips button:hover{border-color:var(--acc)}
+.chips button[aria-pressed=true]{background:linear-gradient(135deg,var(--acc),var(--vio));color:#fff;border-color:transparent;box-shadow:0 6px 16px -8px var(--acc)}
+.hmg div:not(.h):not(.n){border-radius:10px;font-weight:600}
+@media(prefers-reduced-motion:no-preference){.card{animation:up .7s cubic-bezier(.2,.7,.2,1) both}@keyframes up{from{opacity:0;transform:translateY(14px)}}}
+
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:22px;font-weight:700;font-size:20px;color:#fff}
+.brand svg{width:30px;height:30px}.brand em{font-style:normal;color:var(--lime)}
+.brand button{margin-left:auto;width:36px;height:36px;border-radius:50%;border:1px solid #ffffff30;background:#ffffff12;color:#fff;font-size:17px;cursor:pointer}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.seg button{font:500 13px 'Anuphan';padding:5px 14px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+#map{width:100%;max-width:330px;display:block;margin:6px auto 0;overflow:visible}
+#map .pv{cursor:pointer;outline:none}
+#map path{stroke:var(--card);stroke-width:1.5;stroke-linejoin:round;transition:fill .3s,stroke .2s}
+#map .pv:hover path,#map .pv:focus-visible path{stroke:var(--ink)}
+#map .pv.on path{stroke:var(--ink);stroke-width:3}
+#map text{pointer-events:none;paint-order:stroke;stroke:var(--card);stroke-width:3px;stroke-linejoin:round;fill:var(--ink);font-size:12px;font-weight:600}
+#map .pv2{font-size:15px;font-weight:700}
+.mtot{text-align:center;font-size:14px;color:var(--soft);margin:12px 0 0}.mtot b{font-size:22px;color:var(--ink);margin:0 4px}
+.scale{display:flex;align-items:center;gap:10px;justify-content:center;font-size:12px;color:var(--soft);margin-top:10px}
+.scale i{width:140px;height:8px;border-radius:9px;background:linear-gradient(90deg,color-mix(in srgb,var(--acc) 12%,var(--card)),var(--acc))}
+.ins{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ins li{padding:12px 16px 12px 18px;border-radius:14px;background:var(--bg);border-left:4px solid var(--acc);font-size:15px;line-height:1.6}
+.ins li:nth-child(2){border-color:var(--a)}.ins li:nth-child(3){border-color:var(--p)}.ins li:nth-child(4){border-color:var(--c)}.ins li:nth-child(5){border-color:var(--lime)}
+.gl{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.gl div{padding:16px;border-radius:16px;background:var(--bg)}.gl b{display:block;margin-bottom:4px}.gl span{font-size:14px;color:var(--soft);line-height:1.55;display:block}
+
+/* ===== v6 : ocean-indigo look + motion ===== */
+body{background:radial-gradient(1000px 500px at 100% 380px,color-mix(in srgb,var(--acc) 11%,transparent),transparent 60%),radial-gradient(800px 420px at 0 950px,color-mix(in srgb,var(--vio) 10%,transparent),transparent 60%),var(--bg)}
+.hero .w{position:relative;z-index:1}
+.hero::before{content:'';position:absolute;inset:-25%;z-index:0;pointer-events:none;filter:blur(46px);opacity:.9;background:radial-gradient(38% 42% at 78% 30%,color-mix(in srgb,var(--lime) 33%,transparent),transparent 70%),radial-gradient(34% 40% at 20% 75%,color-mix(in srgb,var(--vio) 40%,transparent),transparent 70%),radial-gradient(30% 34% at 55% 95%,color-mix(in srgb,var(--acc) 40%,transparent),transparent 70%)}
+.hero::after{background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--lime) 60%,transparent),color-mix(in srgb,var(--vio) 60%,transparent),transparent)}
+.big b,.k b,.split b,.dn svg text:first-of-type{font-family:'Sora','Anuphan',sans-serif;letter-spacing:-.03em}
+.big b{text-shadow:0 0 40px color-mix(in srgb,var(--lime) 40%,transparent)}
+.pill{display:inline-flex;align-items:center;gap:8px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.pill::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 0 color-mix(in srgb,var(--lime) 60%,transparent)}
+.brand button{transition:transform .5s cubic-bezier(.2,.7,.2,1),background .2s}.brand button:hover{transform:rotate(180deg);background:#ffffff26}
+.split div{box-shadow:inset 0 1px 0 #ffffff26,0 10px 30px -16px #000a}
+.bar{background:color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4)}
+.chips button{transition:background .2s,border-color .2s,box-shadow .2s,transform .2s}.chips button:hover{transform:translateY(-1px)}
+.chips button[aria-pressed=true],.seg button[aria-pressed=true]{background:linear-gradient(135deg,var(--acc),var(--vio));color:#fff;border-color:transparent;box-shadow:0 8px 20px -10px var(--acc)}
+.seg button{transition:background .2s,border-color .2s}
+.card{animation:none;box-shadow:inset 0 1px 0 var(--hi),0 18px 40px -26px rgba(20,30,110,.45)}
+.k::before{content:'';position:absolute;left:22px;top:0;width:38px;height:4px;border-radius:0 0 4px 4px;background:var(--kc,var(--acc))}
+.k::after{filter:blur(18px);opacity:.38;transition:opacity .3s,transform .5s}.k:hover::after{opacity:.6;transform:scale(1.25)}
+.row .t i{box-shadow:inset 0 -6px 8px -6px #0003}
+#map .pv path{transition:fill .3s,stroke .2s,filter .2s}
+#map .pv:hover path,#map .pv:focus-visible path{filter:drop-shadow(0 6px 10px color-mix(in srgb,var(--acc) 55%,transparent))}
+#map .pv.on path{stroke:var(--vio)}
+.scale i{background:linear-gradient(90deg,color-mix(in srgb,var(--acc) 12%,var(--card)),var(--acc),var(--vio))}
+.hmg div:not(.h):not(.n){transition:transform .15s}.hmg div:not(.h):not(.n):hover{transform:scale(1.08)}
+.ins li{transition:transform .2s}.ins li:hover{transform:translateX(4px)}
+summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}summary::-webkit-details-marker{display:none}
+summary::after{content:'+';font-size:20px;line-height:1;color:var(--acc);transition:transform .25s}details[open] summary::after{transform:rotate(45deg)}
+.note{background:color-mix(in srgb,var(--acc) 6%,transparent);border-color:color-mix(in srgb,var(--acc) 35%,var(--line))}
+a:focus-visible,button:focus-visible,summary:focus-visible,#map .pv:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:12px}
+@media(prefers-reduced-motion:no-preference){
+ .hero::before{animation:drift 22s ease-in-out infinite alternate}
+ @keyframes drift{to{transform:translate3d(-4%,5%,0) rotate(8deg) scale(1.08)}}
+ .pill::before{animation:ping 2s ease-out infinite}
+ @keyframes ping{70%,100%{box-shadow:0 0 0 9px color-mix(in srgb,var(--lime) 0%,transparent)}}
+ .hero .w>div:first-child>*{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+ .hero .w>div:first-child>:nth-child(2){animation-delay:.08s}.hero .w>div:first-child>:nth-child(3){animation-delay:.16s}.hero .w>div:first-child>:nth-child(4){animation-delay:.24s}.hero .w>div:first-child>:nth-child(5){animation-delay:.32s}.hero .w>div:first-child>:nth-child(6){animation-delay:.4s}
+ .big{animation:pop 1s cubic-bezier(.2,.7,.2,1) .15s both}
+ @keyframes rise{from{opacity:0;transform:translateY(18px)}}
+ @keyframes pop{from{opacity:0;transform:scale(.88)}}
+ #rg0,#rg1{transition:stroke-dasharray 1.5s cubic-bezier(.2,.7,.2,1) .3s,stroke-dashoffset 1.5s cubic-bezier(.2,.7,.2,1) .3s}
+ .row .t i{transform-origin:left;animation:grow .9s cubic-bezier(.2,.7,.2,1) both}
+ @keyframes grow{from{transform:scaleX(0)}}
+ .ln{stroke-dasharray:1;animation:draw 1.3s cubic-bezier(.4,0,.2,1) both}
+ @keyframes draw{from{stroke-dashoffset:1}}
+ details[open] p{animation:rise .35s ease both}
+}
+
+/* ===== compact hero + top-right theme toggle ===== */
+.hero{padding:20px 0 52px}
+.tg{position:absolute;top:14px;right:16px;z-index:3;width:36px;height:36px;border-radius:50%;border:1px solid #ffffff30;background:#ffffff14;color:#fff;font-size:17px;line-height:1;cursor:pointer;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:transform .5s cubic-bezier(.2,.7,.2,1),background .2s}
+.tg:hover{transform:rotate(180deg);background:#ffffff26}
+.hero .w{gap:24px}
+.brand{margin-bottom:12px;font-size:18px}.brand svg{width:26px;height:26px}
+.pill{margin-bottom:10px;font-size:12px;padding:2px 12px}
+.hero h1{font-size:clamp(22px,3.2vw,32px);line-height:1.3;letter-spacing:-.3px}
+.hero p{font-size:14px;line-height:1.6;margin:8px 0 0}
+.split{margin-top:14px;gap:8px}
+.split div{padding:6px 12px;border-radius:12px;gap:8px}
+.split b{font-size:21px}.split span{font-size:12px}
+.priv{margin-top:12px;gap:6px;font-size:12px}.priv span{padding:1px 10px}
+.big svg{max-width:210px}
+.big b{font-size:clamp(36px,5vw,54px)}
+.big small{transform:translateY(28px);font-size:12px}
+.bar{margin-top:-22px}
+@media(max-width:860px){.big svg{max-width:140px}.big{margin-bottom:-6px}.hero{padding-top:16px}.big b{font-size:34px}.big small{transform:translateY(22px);font-size:11px}}
+
+/* ===== hero: even more compact ===== */
+.hero{padding:12px 0 38px}
+.tg{top:10px;width:32px;height:32px;font-size:15px}
+.hero .w{gap:16px}
+.brand{margin-bottom:8px;font-size:16px;gap:8px}.brand svg{width:22px;height:22px}
+.pill{margin-bottom:8px;font-size:11.5px;padding:1px 10px}
+.hero h1{font-size:clamp(19px,2.4vw,25px);line-height:1.3}
+.hero p{font-size:13px;line-height:1.55;margin:6px 0 0;max-width:38em}
+.split{margin-top:10px;gap:6px}
+.split div{padding:4px 10px;border-radius:10px;gap:6px}
+.split b{font-size:18px}.split span{font-size:11px}
+.priv{margin-top:8px;gap:5px;font-size:11px}.priv span{padding:0 8px;border-radius:6px}
+.big svg{max-width:150px}
+.big b{font-size:clamp(28px,3.6vw,40px)}
+.big small{transform:translateY(20px);font-size:11px}
+.bar{margin-top:-16px;border-radius:16px 16px 0 0}
+.chips{padding:10px 0}
+@media(max-width:860px){.big svg{max-width:104px}.big{margin-bottom:-2px}.hero{padding-top:10px}.big b{font-size:24px}.big small{transform:translateY(16px);font-size:10px}}
+
+/* ===== hero v7: alert banner + 5 stat cards ===== */
+.hero .w{display:block}
+.brand{flex-wrap:wrap;padding-right:44px}
+.brand .pill{margin:0 0 0 6px;font-weight:400;font-size:11.5px;color:#AEB9F0}
+.hero h1{margin-top:2px}
+.bn{display:flex;align-items:flex-start;gap:8px;width:fit-content;max-width:100%;margin-top:12px;padding:7px 16px;border-radius:18px;background:#FF5C7A26;border:1px solid #FF5C7A47;color:#FFAEBE;font-size:13px;line-height:1.5}
+.bn svg{flex:none;width:16px;height:16px;margin-top:3px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hc{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:12px}
+.st{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:18px;background:#ffffff0d;border:1px solid #ffffff1f;box-shadow:inset 0 1px 0 #ffffff1a;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);min-width:0}
+.st>div{min-width:0}
+.st .ic{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--t) 20%,transparent);color:var(--t)}
+.st .ic svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.st b{display:block;font:700 26px/1.1 'Sora','Anuphan',sans-serif;letter-spacing:-.03em;color:#fff}
+.st span{display:block;font-size:12.5px;line-height:1.3;color:#AEB9F0}
+.priv{margin-top:12px}
+@media(max-width:860px){.hc{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:560px){.hc{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.st{padding:10px;gap:10px}.st .ic{width:36px;height:36px}.st b{font-size:22px}.st:last-child{grid-column:span 2}}
+:root[data-mode=d]{--acc:#1FB26B;--vio:#0E8F52;--lime:#5CF0A8;--hero1:#03140D;--hero2:#0B5A38}
+:root[data-mode=f]{--acc:#F2B01E;--vio:#E08A00;--lime:#FFD84D;--hero1:#1A1200;--hero2:#6B4A00}
+:root[data-mode=f] .seg button[aria-pressed=true],:root[data-mode=f] .chips button[aria-pressed=true]{color:#3A2600}
+body,.card,.hero,.seg button,.chips button{transition:background-color .3s,border-color .3s}
+.row .t i{font-size:11px;font-weight:700;line-height:20px;text-align:center;white-space:nowrap;overflow:hidden;font-family:'Sora','Anuphan',sans-serif}
+</style>
+</head>
+<body>
+<section class="hero"><button id="theme" class="tg" class="tg" type="button" aria-label="สลับโหมดสว่าง/มืด">◐</button><div class="w"><div><div class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="14" cy="14" r="9" style="fill:none;stroke:var(--lime)" stroke-width="3"/><path d="M21 21l7 7" style="stroke:var(--lime)" stroke-width="3" stroke-linecap="round"/><path d="M10 15c1-4 5-5 8-4-1 4-4 6-8 4z" style="fill:var(--lime)"/></svg><span>ส่องของเสีย <em>EEC</em></span><span class="pill" id="stat">กำลังโหลดข้อมูล…</span></div><h1>ภาพรวมกรณีลักลอบทิ้งของเสีย<wbr>และโรงงานรีไซเคิล<wbr>ในพื้นที่ EEC</h1><div class="bn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 21 20H3z"/><path d="M12 10v4.5M12 17.2v.1"/></svg><span id="bnT"></span></div><div class="hc"><div class="st"><i class="ic" style="--t:#6C9CFF"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg></i><div><b id="heroN">0</b><span>รายการทั้งหมด</span></div></div><div class="st"><i class="ic" style="--t:#3DE0FF"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V11l6 4v-4l6 4V5h4v15z"/></svg></i><div><b id="hF">0</b><span>การประกอบกิจการโรงงานอุตสาหกรรม</span></div></div><div class="st"><i class="ic" style="--t:#FF5C7A"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 21 20H3z"/><path d="M12 10v4.5M12 17.2v.1"/></svg></i><div><b id="hD">0</b><span>ลักลอบทิ้งของเสีย</span></div></div><div class="st"><i class="ic" style="--t:#FFB020"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M6 20h12M5 7h14"/><path d="M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></svg></i><div><b id="hP">0</b><span>อยู่ระหว่างดำเนินการ</span></div></div><div class="st"><i class="ic" style="--t:#2EE6A6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></i><div><b id="hA">0</b><span>อำเภอที่พบกรณี</span></div></div></div></div></div></section>
+
+<div class="bar"><div class="w"><div class="chips" id="chips" role="group" aria-label="เลือกจังหวัด"></div></div></div>
+
+<main class="w"><div class="grid">
+
+<div class="card s6" id="mapCard" data-m="a"><h2>แผนที่ 7 จังหวัด</h2><p class="sub" id="mapSub">แตะจังหวัดเพื่อดูรายละเอียด</p>
+<div class="seg" id="seg"><button type="button" data-m="a" aria-pressed="true">ทั้งหมด</button><button type="button" data-m="d" aria-pressed="false">ลักลอบทิ้งของเสีย</button><button type="button" data-m="f" aria-pressed="false">การประกอบกิจการโรงงานอุตสาหกรรม</button></div>
+<div class="mtot" id="mTot"></div>
+<svg id="map" viewBox="0 0 380 535" role="group" aria-label="แผนที่จังหวัดภาคตะวันออก"></svg>
+<div class="scale"><span>น้อย</span><i></i><span id="sMax">มาก</span></div></div>
+<div class="card s6"><h2>สรุปให้เข้าใจใน 10 วินาที</h2><p class="sub" id="insSub"></p><ul class="ins" id="ins"></ul></div>
+<div class="card s8"><h2>แนวโน้มรายเดือน</h2><p class="sub" id="trSub"></p><div id="trend"></div></div>
+<div class="card s4"><h2>ความคืบหน้าทางกฎหมาย</h2><p class="sub">สัดส่วนจากกรณีทั้งหมด</p><div class="dn" id="donut"></div></div>
+
+<div class="card s7"><h2>เปรียบเทียบรายจังหวัด</h2><p class="sub">ความยาวแท่งคือจำนวนกรณี สีคือสถานะคดี</p><div id="prov"></div>
+<div class="leg"><em style="--k:var(--a)">ดำเนินคดีแล้ว</em><em style="--k:var(--p)">อยู่ระหว่างดำเนินการ</em><em style="--k:var(--c)">ไม่พบความผิด</em></div></div>
+<div class="card s5"><h2>หน่วยงานที่รับผิดชอบ</h2><p class="sub">5 หน่วยงานที่ดูแลกรณีมากที่สุด</p><div id="src"></div></div>
+
+<div class="card s12"><h2>ประเภทของเสียที่พบ แยกตามจังหวัด</h2><p class="sub">ยิ่งเข้มยิ่งพบมาก (จำนวนกรณี)</p><div class="hm"><div class="hmg" id="hm"></div></div></div>
+
+<div class="card s12"><h2>การประกอบกิจการโรงงานอุตสาหกรรมที่อยู่ในการกำกับ</h2><p class="sub">จำนวนที่ขึ้นทะเบียนแล้ว ไม่ได้หมายความว่ากระทำผิด</p><div id="fac"></div>
+<div class="leg"><em style="--k:var(--acc)">ลำดับ 105 · คัดแยก/ฝังกลบวัสดุที่ไม่ใช้แล้ว</em><em style="--k:var(--lime)">ลำดับ 106 · รีไซเคิลเป็นวัตถุดิบ</em><em style="--k:var(--soft)">อื่น ๆ</em></div></div>
+
+<div class="card s12"><h2>รู้ไว้ก่อนอ่านตัวเลข</h2><div class="gl">
+<div><b>ลักลอบทิ้ง</b><span>การนำของเสียไปทิ้งในที่ที่ไม่ได้รับอนุญาต เช่น พื้นที่รกร้างหรือริมทาง</span></div>
+<div><b>ลำดับ 53(9)</b><span>การล้าง บด หรือย่อยพลาสติก</span></div>
+<div><b>ลำดับ 59</b><span>การถลุง หลอม หล่อ รีด ดึง หรือผลิตเหล็ก หรือเหล็กกล้าในขั้นต้น (Iron and Steel Basic Industries)</span></div>
+<div><b>ลำดับ 60</b><span>ถลุง ผสมทำ ให้บริสุทธิ์ หลอม หล่อ รีด ดึง หรือผลิตโลหะในขั้นต้น ซึ่งมิใช่เหล็กหรือเหล็กกล้า (Non-ferrous Metal Basic Industries)</span></div>
+<div><b>ลำดับ 101</b><span>โรงงานปรับคุณภาพของเสียรวม (central waste treatment plant)</span></div>
+<div><b>ลำดับ 105</b><span>โรงงานคัดแยกหรือฝังกลบสิ่งปฏิกูลและวัสดุที่ไม่ใช้แล้ว</span></div>
+<div><b>ลำดับ 106</b><span>โรงงานนำของเสียมาแปรรูปเป็นวัตถุดิบหรือผลิตภัณฑ์ใหม่ (รีไซเคิล)</span></div>
+<div><b>ลำดับ 7 (1) และ (4)</b><span>การสกัดน้ำมันจากพืช หรือสัตว์ หรือไขมันจากสัตว์ และการทำน้ำมันจากพืช หรือสัตว์ หรือไขมันจากสัตว์ให้บริสุทธิ์</span></div>
+<div><b>ลำดับ 42 (1) และ (2)</b><span>การทำเคมีภัณฑ์ สารเคมี หรือวัสดุเคมีที่มิใช่ และการเก็บรักษา ลำเลียง แยก คัดเลือกหรือแบ่งบรรจุเฉพาะเคมีภัณฑ์อันตราย</span></div>
+<div><b>ลำดับ 43 (1) และ (2)</b><span>การทำปุ๋ย หรือสารป้องกันหรือกำจัดศัตรูพืชหรือสัตว์ และการเก็บรักษาหรือแบ่งบรรจุปุ๋ย หรือสารป้องกันหรือกำจัดศัตรูพืชหรือสัตว์</span></div>
+<div><b>ลำดับ 44</b><span>การผลิตยางเรซินสังเคราะห์ ยางอีลาสโตเมอร์ พลาสติก หรือเส้นใยสังเคราะห์ซึ่งมิใช่ใยแก้ว</span></div>
+<div><b>ลำดับ 45 (1), (2) และ (3)</b><span>การทำสีสำหรับใช้ทา พ่น หรือเคลือบ, การทำน้ำมันซักเงา น้ำมันผสมสี หรือน้ำยาล้างสี และการทำเชลแล็ก แล็กเกอร์ หรือผลิตภัณฑ์สำหรับใช้ยาหรืออุด</span></div>
+<div><b>ลำดับ 48 (4) และ (6)</b><span>การทำไม้ขีดไฟ วัตถุระเบิด หรือดอกไม้เพลิง และการทำหมึกหรือคาร์บอนดำ</span></div>
+<div><b>ลำดับ 49</b><span>กลั่นน้ำมันปิโตรเลียม</span></div>
+<div><b>ลำดับ 50 (4)</b><span>การผสมผลิตภัณฑ์จากปิโตรเลียมเข้าด้วยกัน หรือการผสมผลิตภัณฑ์จากปิโตรเลียมกับวัสดุอื่น แต่ไม่รวมถึงการผสมผลิตภัณฑ์จากก๊าซธรรมชาติกับวัสดุอื่น</span></div>
+<div><b>ลำดับ 89</b><span>ผลิตก๊าซ ซึ่งมิใช่ก๊าซธรรมชาติ ส่งหรือจำหน่ายก๊าซ</span></div>
+<div><b>ลำดับ 91 (2)</b><span>การบรรจุก๊าซ แต่ไม่รวมถึงการบรรจุก๊าซที่เป็นน้ำมันเชื้อเพลิงตามกฎหมายว่าด้วยการควบคุมน้ำมันเชื้อเพลิง</span></div>
+<div><b>ลำดับ 92</b><span>ห้องเย็น</span></div>
+<div><b>ลำดับ 99</b><span>ผลิต ซ่อมแซม ดัดแปลง หรือเปลี่ยนลักษณะอาวุธปืน เครื่องกระสุนปืน วัตถุระเบิด อาวุธหรือสิ่งอื่นใดที่มีอำนาจในการประหาร</span></div>
+<div><b>ไม่พบความผิด</b><span>ตรวจแล้วไม่พบการกระทำผิด หรือเป็นกิจกรรมที่ได้รับอนุญาตถูกต้อง</span></div></div></div>
+</div>
+<p class="note">ข้อมูลทั้งหมดรวมเป็นตัวเลขระดับจังหวัดแล้ว ไม่แสดงชื่อ ที่อยู่ หรือพิกัดของรายกรณี</p>
+</main>
+<footer><div class="w">ส่องของเสีย EEC · ที่มา: ฐานข้อมูลเฝ้าระวังของเสียอุตสาหกรรม EEC (สรุปเฉพาะตัวเลขรวม) · ปรับปรุงล่าสุด: [วันที่] · หน่วยงาน: [ชื่อหน่วยงาน]</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script>
+// ===== ตั้งค่าแหล่งข้อมูล =====
+// เชื่อม Google Sheets อัตโนมัติ: เปิดหน้าเว็บแล้วดึงข้อมูลเองทุกครั้ง และดึงเฉพาะ "ชีตแรก" (แท็บซ้ายสุด) เท่านั้น
+// GID เว้นว่างไว้ = Google จะส่งแท็บแรกให้เสมอ (ไม่ผูกกับเลข gid จึงไม่พลาดแม้มีการสลับลำดับแท็บ)
+// ต้องแชร์ชีตเป็น "ทุกคนที่มีลิงก์ ดูได้"
+const SHEET_ID='1Oi70x6bDCdKam1JoMEJFjElv1JfYomNnwlQm978tn4s', GID='';
+const GQ=GID!==''?'&gid='+GID:'';
+// เมื่อได้ข้อมูลสรุปแล้ว: เปิดหน้านี้ด้วย ?export กดปุ่มคัดลอก แล้ววาง JSON ที่นี่ จากนั้นลบ SHEET_ID ออก
+// หน้าเว็บจะไม่ดึงชีตอีก (ปลอดภัยกว่าสำหรับเผยแพร่)
+const SNAPSHOT=null;
+const WL=['ของเสียทั่วไป','เศษโลหะ','พลาสติก','ของเหลว/น้ำมัน','ของเสียอันตราย'];
+const PV=['ชลบุรี','ระยอง','ฉะเชิงเทรา','ปราจีนบุรี','สระแก้ว','จันทบุรี','ตราด'];
+const MT=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+const $=id=>document.getElementById(id), tot=r=>r.a+r.p+r.c;
+const sumA=(rs,g,L)=>{const o=Array(L).fill(0);rs.forEach(r=>g(r).forEach((v,i)=>o[i]+=v));return o};
+let P=[],M=[],ALL=0,sel=-1;
+
+// ---------- อ่านชีต -> สรุปรวม (ชื่อ/พิกัด/ภาพ ถูกทิ้งในขั้นนี้) ----------
+const clean=s=>String(s||'').replace(/\s+/g,' ').trim();
+const nh=s=>String(s||'').trim().toLowerCase().replace(/[\s._\-\/()]/g,'');
+const AL={caseType:['casetype','ประเภทกรณี','ประเภท'],loc:['locationtype','ลำดับที่','ประเภทสถานที่','ลักษณะสถานที่'],date:['inspectdate','วันที่ตรวจสอบ','วันตรวจสอบ','วันที่เข้าตรวจ','วันที่เข้าตรวจสอบ','วันที่/เดือน/ปีที่เข้าตรวจสอบ','timestamp','วันที่บันทึก','วันที่'],amphoe:['amphoe','อำเภอ','อำเภอ/เขต'],prov:['province','จังหวัด'],waste:['wastetype','ประเภทของเสีย','ชนิดของเสีย'],status:['status','สถานะ','สถานะคดี'],agency:['agency','หน่วยงาน','หน่วยงานที่รับผิดชอบ']};
+let SKIP=[];
+function toRecs(rows){
+ SKIP=[];
+ const head=rows[0].join('|'),out=[];
+ if(head.includes('กรณี')&&head.includes('ลักลอบ')){ // ฟอร์มแบบตำแหน่งคอลัมน์
+  for(const [ri,r] of rows.slice(1).entries()){const t=clean(r[1]);if(!t){SKIP.push('แถว '+(ri+2)+': ไม่มีประเภทกรณี');continue}
+   const d=t.includes('ลักลอบ');const o=d?2:17;
+   out.push({row:ri+2,dump:d,loc:r[o],date:r[d?3:18],amphoe:r[d?7:22],prov:r[d?8:23],waste:r[d?11:26],status:r[d?13:28],agency:r[d?15:30]})}
+ }else{
+  const map=rows[0].map(h=>{const k=nh(h);return Object.keys(AL).find(f=>AL[f].some(x=>nh(x)===k))||null});
+  if(!map.some(Boolean))throw new Error('header');
+  for(const r of rows.slice(1)){const o={};map.forEach((k,i)=>{if(k&&o[k]===undefined)o[k]=r[i]});
+   const ct=clean(o.caseType).toLowerCase();out.push({dump:ct.includes('dumping')||ct.includes('ลักลอบ'),loc:o.loc,date:o.date,amphoe:o.amphoe,prov:o.prov,waste:o.waste,status:o.status,agency:o.agency})}
+ }
+ return out}
+let DORD=null;
+function ym(t,rows){t=clean(t);let y,mo,m;
+ if((m=t.match(/^(\d{4})-(\d{2})-\d{2}/))){y=+m[1];mo=+m[2]}
+ else if((m=t.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/))){if(!DORD)DORD=rows.some(r=>{const x=clean(r.date).match(/^(\d{1,2})\/(\d{1,2})\//);return x&&+x[2]>12})?'mdy':'dmy';mo=DORD==='mdy'?+m[1]:+m[2];y=+m[3]}
+ if(!y||mo<1||mo>12)return'';if(y>2400)y-=543;return y+'-'+String(mo).padStart(2,'0')}
+const bucket=s=>{s=clean(s);return(!s||s.includes('ไม่ดำเนินคดี'))?'c':s.includes('อยู่ระหว่าง')?'p':'a'};
+function widx(t){t=clean(t);const safe=/ไม่(เป็น)?(ของเสีย)?อันตราย/.test(t);
+ if(/อันตราย/.test(t)&&!safe)return 4;if(/Liquid|น้ำมัน|สารเคมี|น้ำเสีย|ของเหลว/.test(t))return 3;
+ if(/โลหะ|เหล็ก|ทอง|นิกเกิล|สายไฟ|แบตเตอรี่/.test(t))return 1;if(/พลาสติก/.test(t))return 2;return 0}
+function aggregate(recs){
+ const now=new Date(),keys=[],ml=[];
+ for(let i=11;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth()-i,1);keys.push(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'));ml.push(MT[d.getMonth()])}
+ const by={};PV.forEach(n=>by[n]={n,a:0,p:0,c:0,f:[0,0],fx:0,w:[0,0,0,0,0],m:Array(12).fill(0),ag:{},_am:new Set()});
+ recs.forEach(r=>{const p=by[clean(r.prov)];if(!p){SKIP.push('แถว '+(r.row||'?')+': จังหวัด "'+clean(r.prov)+'" ไม่ตรงกับ 7 จังหวัด');return}
+  if(r.dump){p[bucket(r.status)]++;p.w[widx(r.waste)]++;const k=keys.indexOf(ym(r.date,recs));if(k>=0)p.m[k]++;
+   const ag=clean(r.agency);if(ag)p.ag[ag]=(p.ag[ag]||0)+1;}
+  {const am=clean(r.amphoe);if(am)p._am.add(am)}
+  if(!r.dump){p.fx++;const l=String(r.loc||'');if(l.includes('105'))p.f[0]++;else if(l.includes('106'))p.f[1]++}});
+ return{P:PV.map(n=>{const p=by[n];p.am=p._am.size;delete p._am;return p}),M:ml,upd:new Date().toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'numeric'})}}
+
+// ---------- ข้อมูลตัวอย่าง (ใช้เมื่อเชื่อมชีตไม่ได้) ----------
+function empty(){return{P:PV.map(n=>({n,a:0,p:0,c:0,f:[0,0],fx:0,w:[0,0,0,0,0],am:0,ag:{},m:Array(12).fill(0)})),M:MT.slice(0,12)}}
+function demo(){const d=[['ชลบุรี',3,3,2,20,22,[3,2,1,1,1],5],['ระยอง',3,2,1,12,16,[2,1,1,1,1],4],['ฉะเชิงเทรา',2,1,2,8,10,[2,1,1,1,0],3],['ปราจีนบุรี',1,2,1,5,6,[2,1,0,1,0],3],['สระแก้ว',1,0,1,2,3,[1,0,1,0,0],1],['จันทบุรี',1,1,0,1,3,[1,0,0,1,0],1],['ตราด',0,0,1,1,1,[1,0,0,0,0],1]];
+ const W=[.05,.06,.07,.08,.09,.10,.10,.11,.09,.08,.09,.08];
+ return{P:d.map(([n,a,p,c,f1,f2,w,am])=>{let acc=0,cum=0;return{n,a,p,c,f:[f1,f2],fx:f1+f2,w,am,ag:{'[หน่วยงาน ก]':a+p,'[หน่วยงาน ข]':c},m:W.map(x=>{acc+=x*(a+p+c);const r=Math.round(acc)-cum;cum+=r;return r})}}),M:['พ.ย.','ธ.ค.','ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.']}}
+
+function trend(v){
+ const W=600,H=190,l=26,b=24,t=26,mx=Math.max(4,...v),x=i=>l+i*(W-l-10)/11,y=n=>t+(H-t-b)*(1-n/mx);
+ const d=v.map((n,i)=>(i?'L':'M')+x(i).toFixed(1)+' '+y(n).toFixed(1)).join('');
+ const g=[0,.5,1].map(f=>`<line x1="${l}" x2="${W-10}" y1="${y(mx*f)}" y2="${y(mx*f)}" stroke="var(--line)"/><text x="${l-6}" y="${y(mx*f)+4}" text-anchor="end">${Math.round(mx*f)}</text>`).join('');
+ const lb=M.map((m,i)=>`<text x="${x(i)}" y="${H-6}" text-anchor="middle">${m}</text>`).join('');
+ const dots=v.map((n,i)=>`<circle cx="${x(i)}" cy="${y(n)}" r="4" fill="var(--card)" stroke="var(--acc)" stroke-width="2"><title>${M[i]}: ${n} กรณี</title></circle>`).join('');
+ const vl=v.map((n,i)=>`<text x="${x(i)}" y="${y(n)-10}" text-anchor="middle" style="fill:var(--ink);font-weight:700;font-size:13px">${n}</text>`).join('');
+ return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="แนวโน้มรายเดือน"><defs><linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--acc)" stop-opacity=".3"/><stop offset="1" stop-color="var(--acc)" stop-opacity="0"/></linearGradient><linearGradient id="lg" x1="0" x2="1" y1="0" y2="0"><stop offset="0" stop-color="var(--acc)"/><stop offset="1" stop-color="var(--vio)"/></linearGradient></defs>${g}<path d="${d}L${x(11)} ${H-b}L${x(0)} ${H-b}Z" fill="url(#gr)"/><path class="ln" pathLength="1" d="${d}" fill="none" stroke="url(#lg)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>${dots}${vl}${lb}</svg>`}
+
+function donut(a,p,c){
+ const T=a+p+c||1,R=54,C=2*Math.PI*R;let off=0;
+ const seg=[[a,'var(--a)','ดำเนินคดีแล้ว'],[p,'var(--p)','อยู่ระหว่างดำเนินการ'],[c,'var(--c)','ไม่พบความผิด']];
+ const arcs=seg.map(([v,col])=>{const L=C*v/T,s=`<circle cx="70" cy="70" r="${R}" fill="none" stroke="${col}" stroke-width="18" stroke-dasharray="${L} ${C-L}" stroke-dashoffset="${-off}" transform="rotate(-90 70 70)"/>`;off+=L;return s}).join('');
+ return `<svg viewBox="0 0 140 140" role="img" aria-label="สัดส่วนสถานะคดี"><circle cx="70" cy="70" r="${R}" fill="none" stroke="var(--line)" stroke-width="18"/>${arcs}<text x="70" y="72" text-anchor="middle" style="font-size:26px;font-weight:700;fill:var(--ink)">${a+p+c}</text><text x="70" y="90" text-anchor="middle">กรณี</text></svg><ul>${seg.map(([v,col,l])=>`<li><span><i style="display:inline-block;width:10px;height:10px;border-radius:3px;background:${col};margin-right:8px"></i>${l}</span><b>${Math.round(100*v/T)}%</b></li>`).join('')}</ul>`}
+
+function render(){
+ const rs=sel<0?P:[P[sel]],a=rs.reduce((s,r)=>s+r.a,0),p=rs.reduce((s,r)=>s+r.p,0),c=rs.reduce((s,r)=>s+r.c,0),T=a+p+c;
+ heroCards(rs,p,T);
+
+
+ $('trSub').textContent=(sel<0?'ทั้ง 7 จังหวัด':'จังหวัด'+P[sel].n)+' · 12 เดือนล่าสุด (นับเฉพาะกรณีที่มีวันที่ตรวจสอบ)';
+ $('trend').innerHTML=trend(sumA(rs,r=>r.m,12));
+ $('donut').innerHTML=donut(a,p,c);
+ const mx=Math.max(1,...P.map(tot));
+ const dim=i=>sel>=0&&sel!==i?' dim':'';
+ $('prov').innerHTML=P.map((r,i)=>`<div class="row${dim(i)}"><span>${r.n}</span><div class="t" style="width:${100*tot(r)/mx}%">${SEG(r.a,tot(r),mx,'var(--a)','#fff','ดำเนินคดีแล้ว')}${SEG(r.p,tot(r),mx,'var(--p)','#2A1B00','อยู่ระหว่างดำเนินการ')}${SEG(r.c,tot(r),mx,'var(--c)','#00302A','ไม่พบความผิด')}</div><b>${tot(r)}</b></div>`).join('');
+ const ag={};rs.forEach(r=>Object.entries(r.ag).forEach(([k,v])=>ag[k]=(ag[k]||0)+v));
+ const top=Object.entries(ag).sort((x,y)=>y[1]-x[1]).slice(0,5),aT=top[0]?top[0][1]:1,aS=Object.values(ag).reduce((x,y)=>x+y,0)||1;
+ $('src').innerHTML=top.length?top.map(([k,v])=>`<div class="row" style="grid-template-columns:1fr auto"><div><div style="font-size:14px;margin-bottom:4px">${k}</div><div class="t" style="width:${100*v/aT}%">${SEG(v,v,aT,'var(--acc)','#fff','สัดส่วน').replace(/>[^<]*<\/i>$/,'>'+(100*v/aT>=14?Math.round(100*v/aS)+'%':'')+'</i>').replace(/title="[^"]*"/,'title="'+v+' ('+Math.round(100*v/aS)+'%)"')}</div></div><b>${v}${100*v/aT>=14?'':' <small style="font-weight:500;color:var(--soft)">('+Math.round(100*v/aS)+'%)</small>'}</b></div>`).join(''):'<p class="sub">ยังไม่มีข้อมูล</p>';
+ const hmx=Math.max(1,...P.flatMap(r=>r.w)),RC=['#2F5BFF','#1FB26B','#F2B01E','#FF5C7A','#7C4DFF','#14B8D4','#FF8A3D'];
+ $('hm').innerHTML='<div class="h"></div>'+WL.map(l=>`<div class="h">${l}</div>`).join('')+P.map((r,i)=>`<div class="n"${sel>=0&&sel!==i?' style="opacity:.35"':''}>${r.n}</div>`+r.w.map((v,j)=>`<div class="${v?'':'z'}" style="${sel>=0&&sel!==P.indexOf(r)?'opacity:.35;':''}background:color-mix(in srgb,${RC[j%RC.length]} ${v?Math.round(10+75*v/hmx):0}%,transparent)">${v||'–'}</div>`).join('')).join('');
+ const fm=Math.max(1,...P.map(r=>r.fx));
+ $('fac').innerHTML=P.map((r,i)=>{const x=r.fx||1,o=Math.max(0,r.fx-r.f[0]-r.f[1]);return `<div class="row${dim(i)}"><span>${r.n}</span><div class="t" style="width:${100*r.fx/fm}%">${SEG(r.f[0],x,fm,'var(--acc)','#fff','ลำดับ 105')}${SEG(r.f[1],x,fm,'var(--lime)','#00262E','ลำดับ 106')}${SEG(o,x,fm,'color-mix(in srgb,var(--soft) 45%,transparent)','var(--ink)','อื่น ๆ')}</div><b>${r.fx}</b></div>`}).join('');
+ drawMap();$('ins').innerHTML=insights(rs,a,p,c,T);$('insSub').textContent=sel<0?'ทั้ง 7 จังหวัด':'จังหวัด'+P[sel].n;$('mapSub').textContent=sel<0?'แตะจังหวัดเพื่อดูรายละเอียด':'กำลังดูจังหวัด'+P[sel].n+' · แตะซ้ำเพื่อยกเลิก';
+}
+$('chips').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sel=+b.dataset.i;document.querySelectorAll('#chips button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
+function heroViz(){DUMP=P.reduce((s,r)=>s+tot(r),0)}
+function heroCards(rs,p,T){const fx=rs.reduce((s,r)=>s+r.fx,0),am=rs.reduce((s,r)=>s+r.am,0),L=x=>x.toLocaleString('th-TH');
+ $('heroN').textContent=L(T+fx);$('hF').textContent=L(fx);$('hD').textContent=L(T);$('hP').textContent=L(p);$('hA').textContent=L(am);
+ $('bnT').textContent=(sel<0?'':'จังหวัด'+rs[0].n+' · ')+'พบลักลอบทิ้งของเสีย '+T+' กรณี จากทั้งหมด '+L(T+fx)+' รายการ (อีก '+L(fx)+' รายการเป็นการประกอบกิจการโรงงานอุตสาหกรรมที่ขึ้นทะเบียน ไม่ได้หมายความว่ากระทำผิด)'}
+const MAPP=[{"n":"ชลบุรี","d":"M26.1 183.6L31.6 184.9L36.0 178.9L39.8 169.9L38.1 167.5L47.0 168.4L51.6 166.5L57.3 159.9L81.0 169.0L93.4 182.0L101.4 187.2L106.7 191.0L111.7 195.4L118.5 192.1L127.5 195.1L134.9 209.2L145.4 216.5L155.2 229.6L159.7 237.2L158.7 240.6L155.8 242.5L146.8 240.3L135.2 245.0L133.3 254.9L124.8 256.9L119.8 259.8L113.8 264.5L106.3 263.4L95.9 262.2L88.7 254.9L83.0 261.1L77.0 256.3L70.2 256.4L61.7 256.6L64.6 260.3L63.9 263.5L48.3 262.1L46.5 270.9L48.8 275.7L46.2 286.1L44.7 289.5L41.6 301.2L32.9 315.0L28.6 321.2L27.4 327.2L28.7 333.9L23.4 345.1L20.0 344.4L16.6 343.1L17.4 335.8L12.5 332.6L2.9 334.9L4.2 330.2L1.3 330.2L3.8 326.9L0.0 319.6L3.6 315.8L6.6 312.9L11.3 313.0L11.2 296.3L4.0 285.4L6.4 284.2L8.8 275.9L15.3 272.8L13.5 261.3L12.8 260.1L8.1 257.4L8.3 255.5L6.8 255.0L11.5 247.6L16.4 238.9L16.3 221.2L12.5 211.8L16.5 207.4L25.6 204.1L24.0 190.0L26.1 183.6Z","x":54.9,"y":254.5},{"n":"ระยอง","d":"M28.6 333.9L29.2 323.1L30.8 319.5L32.6 309.9L41.1 296.9L44.0 288.2L46.6 278.2L47.1 274.6L42.3 269.5L60.0 261.9L66.3 262.1L61.4 259.9L63.5 254.4L73.4 258.8L79.2 260.0L83.0 258.5L91.8 256.8L98.7 263.5L109.0 261.0L117.5 263.3L122.8 259.7L130.5 257.1L136.1 248.6L139.5 245.4L149.3 242.2L155.8 242.5L156.3 250.5L159.2 263.9L166.0 263.8L163.4 273.6L166.5 281.5L172.6 281.1L177.0 288.7L178.3 295.9L177.6 307.3L176.5 316.8L174.2 317.2L171.5 323.9L171.4 327.0L165.0 324.3L151.0 328.8L137.5 334.2L131.9 338.2L110.8 338.6L105.3 347.3L86.9 336.2L58.5 330.9L55.1 330.8L52.4 329.9L28.6 333.9Z","x":107.5,"y":290.3},{"n":"จันทบุรี","d":"M277.1 382.3L271.1 387.3L266.8 395.1L261.3 395.7L261.3 390.6L258.3 386.9L261.1 382.3L260.9 379.1L256.3 378.0L250.8 376.8L248.8 374.2L246.6 380.1L254.7 379.6L255.7 384.2L259.9 394.7L255.9 398.2L234.7 378.9L232.9 380.2L232.8 377.5L221.0 366.1L229.2 365.6L223.7 359.8L226.8 358.3L218.9 357.1L221.3 357.8L220.9 368.2L217.4 365.9L217.5 362.4L207.1 355.0L202.5 351.2L203.4 347.6L198.3 346.2L199.9 356.6L191.7 349.6L189.2 347.4L193.0 344.9L189.1 344.0L185.9 341.3L178.8 330.8L171.4 327.0L171.4 323.8L174.2 317.2L176.4 316.8L177.6 307.3L178.3 295.9L177.0 288.7L172.5 281.1L166.5 281.5L163.3 273.5L166.0 263.8L159.2 263.9L156.3 250.5L155.8 242.5L158.6 240.5L159.6 237.2L163.7 236.3L166.8 235.9L172.2 233.4L179.3 226.9L183.3 225.0L187.5 229.5L190.7 228.7L191.9 222.1L193.3 217.6L197.5 217.3L204.5 210.6L208.4 209.1L216.7 218.2L220.6 226.2L230.0 221.8L233.8 208.6L237.8 215.6L247.1 223.0L258.7 223.5L263.6 218.2L264.1 217.1L270.4 212.2L274.1 215.5L273.4 219.5L277.2 227.0L282.3 241.8L285.4 248.0L288.8 254.2L299.6 268.4L303.6 272.5L298.1 274.9L298.1 280.6L302.1 295.6L303.4 300.3L306.0 304.5L307.2 310.8L303.9 316.7L302.3 316.5L295.8 319.4L286.9 321.7L282.5 326.1L279.6 329.9L282.6 341.5L285.8 348.1L282.1 350.2L277.9 345.0L272.9 346.2L265.3 352.7L267.3 360.8L272.0 366.3L268.1 371.6L269.1 376.2L277.1 382.3Z","x":233.5,"y":308.8},{"n":"ตราด","d":"M312.4 504.7L312.0 509.5L314.8 507.5L316.5 510.4L318.4 509.7L319.8 511.6L318.4 513.9L319.9 518.6L317.7 522.9L316.2 526.0L316.5 527.0L318.5 526.6L317.1 529.3L316.9 535.1L312.6 532.4L312.3 529.2L308.9 529.8L307.7 527.7L304.9 527.0L306.2 524.5L308.4 523.8L308.3 521.1L304.6 517.5L306.4 515.7L305.2 510.3L307.6 509.1L306.5 505.2L308.7 502.6L308.9 498.6L310.7 499.1L313.0 503.7L312.4 504.7L312.4 504.7ZM295.1 484.9L302.3 486.6L301.1 489.1L298.1 489.0L297.9 493.2L294.5 489.1L291.5 488.9L290.7 490.0L290.1 489.1L290.4 487.5L294.1 487.4L295.1 484.9L295.1 484.9ZM260.1 428.4L268.6 429.6L271.5 433.0L273.8 433.7L276.2 439.2L279.1 442.0L279.7 445.6L281.8 445.6L281.8 448.0L290.6 458.9L288.8 460.9L288.6 463.5L279.0 454.5L276.8 455.8L278.1 457.9L278.1 461.2L275.4 461.6L270.2 459.2L267.2 459.4L266.1 460.7L264.6 458.3L262.7 457.4L263.8 455.8L262.0 451.9L263.2 446.8L262.3 443.9L259.6 441.4L259.4 435.7L255.1 429.5L258.4 430.1L258.6 428.2L260.1 428.4L260.1 428.4ZM277.1 382.3L269.0 376.1L268.0 371.6L271.9 366.3L267.3 360.7L265.3 352.7L272.8 346.1L277.9 344.9L282.1 350.1L285.7 348.1L282.5 341.5L279.6 329.8L282.5 326.0L286.8 321.6L295.8 319.3L302.3 316.4L300.6 318.9L300.1 325.2L301.5 329.2L306.4 334.6L321.7 341.8L326.4 347.1L330.5 351.1L332.4 355.6L335.5 359.0L338.7 361.5L340.0 365.2L342.9 369.0L345.6 370.0L349.4 374.4L351.6 381.0L340.9 387.6L338.7 406.7L337.0 422.9L349.1 441.4L354.3 463.9L357.8 474.3L363.8 486.5L366.2 490.1L368.9 493.1L373.0 497.0L374.9 518.3L372.2 512.2L370.6 500.2L349.2 470.2L348.0 457.9L347.9 450.5L323.0 427.6L326.0 425.8L324.4 420.6L312.6 418.3L310.5 417.8L311.5 421.2L310.1 424.7L310.3 430.4L310.8 437.0L315.1 441.7L315.1 446.6L309.2 439.2L296.0 429.0L295.1 424.1L276.3 419.1L272.3 418.0L268.6 421.5L260.6 418.1L261.6 413.4L257.0 404.9L256.5 401.3L259.8 402.5L269.5 396.8L272.5 393.6L272.7 387.2L277.1 382.3Z","x":310.6,"y":399.6},{"n":"ฉะเชิงเทรา","d":"M14.7 93.1L54.9 91.4L57.6 94.9L59.1 98.3L58.1 104.8L57.3 106.4L59.2 106.1L56.0 106.6L56.2 109.7L57.1 113.2L66.4 108.3L70.1 107.0L75.2 110.6L89.2 110.5L91.9 111.8L96.6 111.0L99.0 114.0L109.1 117.8L118.3 122.2L125.3 127.2L131.1 128.4L136.9 134.7L150.7 134.3L155.6 128.5L162.0 123.4L172.4 128.4L173.8 133.8L172.7 137.3L174.2 142.1L181.0 141.7L185.8 154.3L189.5 160.3L194.4 162.3L191.9 169.4L187.4 173.7L192.8 179.9L198.3 182.8L198.9 188.7L205.3 198.0L206.9 204.1L208.4 209.1L204.5 210.6L197.5 217.3L193.3 217.6L191.9 222.1L190.7 228.7L187.6 229.5L183.3 225.0L179.3 226.9L172.2 233.4L166.9 235.9L163.8 236.3L159.7 237.2L158.7 232.7L150.5 220.1L138.2 214.6L131.8 209.3L125.1 195.4L117.2 193.8L109.9 192.4L106.4 186.5L96.2 185.9L83.5 173.6L75.5 165.5L53.3 165.6L50.2 165.4L40.1 168.5L37.4 169.0L42.9 175.0L36.0 181.3L27.9 185.0L26.1 183.6L26.9 177.6L26.0 181.4L2.9 182.0L3.6 179.1L7.2 173.8L13.0 168.1L13.5 161.3L22.9 153.7L20.8 149.9L5.1 141.8L4.0 141.1L19.0 120.1L12.6 113.6L14.6 95.8L14.7 93.1Z","x":106.3,"y":160.9},{"n":"ปราจีนบุรี","d":"M108.1 13.4L108.8 3.1L118.1 0.0L126.4 7.0L128.4 5.4L136.7 4.4L142.0 8.6L146.9 12.8L165.4 25.5L167.6 22.0L176.8 21.2L181.4 20.4L191.4 24.5L200.9 29.7L209.5 27.6L207.4 33.1L201.6 38.7L204.6 43.5L216.6 49.2L229.6 57.8L228.3 66.6L218.9 71.6L217.8 78.3L198.8 84.2L201.6 97.9L197.0 97.0L193.2 107.4L196.1 116.7L200.2 120.9L200.0 129.2L199.9 134.3L201.1 146.8L202.2 156.1L200.8 158.4L199.3 159.5L194.4 162.3L190.7 163.1L187.2 158.7L181.0 152.8L178.3 140.2L174.4 139.7L172.6 134.5L172.1 131.2L165.0 120.4L156.4 124.4L153.2 129.4L145.7 132.6L133.7 130.0L129.8 123.6L125.0 125.2L114.8 118.5L107.3 116.0L98.6 109.4L93.2 109.9L90.7 109.9L80.3 108.3L74.2 108.4L70.0 108.6L61.6 112.1L59.1 111.2L55.3 107.4L57.6 108.0L58.9 105.0L56.5 105.6L57.6 102.2L57.6 98.5L54.9 91.4L55.8 90.6L56.4 86.3L61.1 83.7L65.6 83.1L66.2 81.2L68.7 75.5L81.3 76.3L86.3 73.5L85.7 64.8L82.3 58.1L89.6 53.1L97.4 47.7L98.5 41.6L101.5 35.1L119.9 36.2L119.7 26.8L117.3 21.6L108.1 13.4Z","x":137.6,"y":83.8},{"n":"สระแก้ว","d":"M229.6 57.8L240.3 59.5L240.6 53.8L248.6 53.8L248.6 57.4L249.5 58.8L258.7 58.5L262.5 60.6L269.0 62.0L274.9 61.3L279.9 58.8L288.3 57.5L288.3 57.5L288.3 57.5L289.1 59.2L292.6 60.6L297.5 59.6L304.5 59.3L319.9 54.0L328.7 55.1L335.7 61.5L346.0 60.0L348.7 59.2L350.4 55.7L353.2 53.8L356.8 53.9L360.2 54.6L363.4 56.4L367.2 58.0L372.4 55.4L378.0 53.0L377.2 61.4L372.8 70.4L374.7 82.6L366.7 85.1L355.2 96.4L348.9 112.5L342.4 125.6L339.7 127.6L317.0 140.1L309.8 147.8L313.3 152.0L323.0 158.3L311.9 163.8L297.0 164.9L286.4 165.2L276.5 163.9L271.7 167.4L275.1 176.1L274.5 185.5L272.6 206.5L274.1 215.5L273.0 215.5L266.4 217.6L262.9 215.2L261.9 222.5L250.1 221.8L244.3 214.8L235.2 209.3L231.6 219.3L223.3 223.4L215.5 226.9L212.7 217.1L208.4 209.1L206.9 204.1L205.3 198.0L198.9 188.7L198.3 182.8L192.8 179.9L187.4 173.7L191.9 169.4L194.4 162.3L199.3 159.5L200.8 158.4L202.2 156.1L201.1 146.8L199.9 134.3L200.0 129.2L200.2 120.9L196.1 116.7L193.2 107.4L197.0 97.0L201.6 97.9L198.8 84.2L217.8 78.3L218.9 71.6L228.3 66.6L229.6 57.8Z","x":271.1,"y":120.5}];
+let MM='a',DUMP=0;
+const mval=r=>MM==='a'?tot(r)+r.fx:MM==='d'?tot(r):MM==='f'?r.fx:(tot(r)?Math.round(100*r.a/tot(r)):0);
+const SEG=(v,t,m,bg,fg,nm)=>{const w=100*v/(t||1),lab=v&&100*v/(m||1)>=9?Math.round(w)+'%':'';return `<i title="${nm}: ${v} (${Math.round(w)}%)" style="width:${w}%;background:${bg};color:${fg}">${lab}</i>`};
+function drawMap(){
+ $('mapCard').dataset.m=MM;document.documentElement.dataset.mode=MM;
+ const vals=P.map(mval),mx=Math.max(1,...vals);
+ const mk=f=>MAPP.map(m=>{const i=P.findIndex(r=>r.n===m.n);return i<0?'':f(m,i,vals[i])}).join('');
+ $('map').innerHTML=mk((m,i,v)=>`<g class="pv${sel===i?' on':''}" data-i="${i}" tabindex="0" role="button" aria-label="${m.n} ${v}"><path d="${m.d}" style="fill:color-mix(in srgb,var(--acc) ${Math.round(12+78*v/mx)}%,var(--card))"/></g>`)+mk((m,i,v)=>`<text x="${m.x}" y="${m.y}" text-anchor="middle">${m.n}</text><text class="pv2" x="${m.x}" y="${m.y+16}" text-anchor="middle">${v}${MM==='r'?'%':''}</text>`);
+ $('sMax').textContent='มาก ('+mx+(MM==='r'?'%':'')+')'
+ $('mTot').innerHTML='รวมทั้งหมด <b>'+vals.reduce((x,y)=>x+y,0)+'</b> '+(MM==='f'?'แห่ง':MM==='a'?'รายการ':'กรณี')}
+function insights(rs,a,p,c,T){
+ if(!rs.reduce((x,r)=>x+tot(r)+r.fx,0))return '<li>ยังไม่มีข้อมูล</li>';
+ const L=[],top=[...P].sort((x,y)=>tot(y)-tot(x))[0],w=sumA(rs,r=>r.w,5),wi=w.indexOf(Math.max(...w)),m=sumA(rs,r=>r.m,12),
+  l3=m.slice(9).reduce((x,y)=>x+y,0),p3=m.slice(6,9).reduce((x,y)=>x+y,0),fx=rs.reduce((x,r)=>x+r.fx,0);
+ L.push(sel<0?`พบลักลอบทิ้งของเสียมากที่สุดที่ <b>จังหวัด${top.n}</b> จำนวน <b>${tot(top)}</b> กรณี หรือ ${Math.round(100*tot(top)/(DUMP||1))}% ของทั้งภาค`:`<b>จังหวัด${rs[0].n}</b> มี <b>${T}</b> กรณี คิดเป็น ${Math.round(100*T/(DUMP||1))}% ของทั้งภาค`);
+ L.push(`ดำเนินคดีแล้ว <b>${a}</b> กรณี อยู่ระหว่างดำเนินการ <b>${p}</b> กรณี และตรวจแล้วไม่พบความผิด <b>${c}</b> กรณี`);
+ if(T)L.push(`ของเสียที่พบบ่อยที่สุดคือ <b>${WL[wi]}</b> (${w[wi]} กรณี)`);
+ L.push(`3 เดือนล่าสุดพบ <b>${l3}</b> กรณี ${l3>p3?'เพิ่มขึ้น':l3<p3?'ลดลง':'เท่ากับ'}จาก ${p3} กรณีใน 3 เดือนก่อนหน้า`);
+ L.push(`มีการประกอบกิจการโรงงานอุตสาหกรรม <b>${fx}</b> แห่งอยู่ในการกำกับ การขึ้นทะเบียนไม่ได้หมายความว่ากระทำผิด`);
+ return L.map(x=>`<li>${x}</li>`).join('')}
+function pick(i){sel=sel===i?-1:i;document.querySelectorAll('#chips button').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.i===sel));render()}
+function buildChips(){$('chips').innerHTML=['ทุกจังหวัด',...P.map(r=>r.n)].map((n,i)=>`<button aria-pressed="${i===0}" data-i="${i-1}">${n}</button>`).join('')}
+function countUp(){const el=$('heroN');if(matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=ALL;return}
+ const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1100);el.textContent=Math.round(ALL*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(f)})(t0)}
+function setData(d,msg){P=d.P;M=d.M;ALL=P.reduce((s,r)=>s+tot(r)+r.fx,0);sel=-1;heroViz();buildChips();render();countUp();$('stat').textContent=msg||('ข้อมูลจากฐานข้อมูลเฝ้าระวัง · ปรับปรุง '+(d.upd||''));
+ if(/[?&]export/.test(location.search)){const b=document.createElement('button');b.textContent='คัดลอกข้อมูลสรุป (JSON)';b.style.cssText='position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:9;padding:10px 16px;border-radius:12px;border:0;background:#3DE0FF;color:#0B1030;font:600 14px Anuphan;cursor:pointer';
+  b.onclick=()=>{const j=JSON.stringify({P,M,upd:d.upd});(navigator.clipboard?navigator.clipboard.writeText(j):Promise.reject()).then(()=>b.textContent='คัดลอกแล้ว',()=>prompt('คัดลอกข้อความนี้',j))};document.body.appendChild(b)}}
+function viaJsonp(){return new Promise((ok,no)=>{const cb='gv'+Date.now(),sc=document.createElement('script'),t=setTimeout(()=>{cleanup();no(new Error('timeout'))},15000);
+ function cleanup(){clearTimeout(t);delete window[cb];sc.remove()}
+ window[cb]=res=>{cleanup();if(!res||res.status!=='ok'||!res.table)return no(new Error('gviz'));
+  const cs=res.table.cols.map(c=>c.label||''),rs=res.table.rows.map(r=>(r.c||[]).map(c=>c?(c.f!=null?c.f:(c.v!=null?c.v:'')):''));
+  ok(cs.some(Boolean)?[cs,...rs]:rs)};
+ sc.onerror=()=>{cleanup();no(new Error('script'))};
+ sc.src='https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?headers=1&tqx=responseHandler:'+cb+GQ+'&_='+Date.now();document.head.appendChild(sc)})}
+async function viaCsv(u){const r=await fetch(u,{cache:'no-store'});if(!r.ok)throw new Error('http '+r.status);
+ const t=(await r.text()).trim();if(/^<(!doctype|html)/i.test(t))throw new Error('not csv');
+ return Papa.parse(t,{skipEmptyLines:true}).data}
+async function load(){
+ if(SNAPSHOT)return setData(SNAPSHOT);
+ if(!SHEET_ID)return setData(empty(),'ยังไม่มีข้อมูล');
+ const base='https://docs.google.com/spreadsheets/d/'+SHEET_ID,
+  srcs=[()=>viaCsv(base+'/gviz/tq?tqx=out:csv'+GQ),()=>viaCsv(base+'/export?format=csv'+GQ),()=>viaJsonp()];
+ for(const g of srcs){try{const rows=await g();const recs=toRecs(rows);if(!recs.length)throw new Error('empty');const ag=aggregate(recs);setData(ag);if(SKIP.length){console.warn('แถวที่ไม่ถูกนับ:',SKIP);$('stat').textContent+=' · อ่าน '+(rows.length-1)+' แถว นับได้ '+(rows.length-1-SKIP.length)+' แถว (ข้าม '+SKIP.length+': '+SKIP.slice(0,3).join('; ')+(SKIP.length>3?' …':'')+')'}return}catch(e){console.warn('sheet source failed:',e&&e.message||e)}}
+ setData(demo(),'เชื่อมต่อชีตไม่สำเร็จ · กำลังแสดงข้อมูลตัวอย่าง (ตรวจสอบว่าแชร์ชีตเป็น "ทุกคนที่มีลิงก์ ดูได้")')}
+$('map').addEventListener('click',e=>{const g=e.target.closest('.pv');if(g)pick(+g.dataset.i)});
+$('map').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const g=e.target.closest('.pv');if(g){e.preventDefault();pick(+g.dataset.i)}}});
+$('seg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;MM=b.dataset.m;document.querySelectorAll('#seg button').forEach(x=>x.setAttribute('aria-pressed',x===b));drawMap()});
+$('theme').onclick=()=>{const d=document.documentElement,dk=(d.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'))==='dark';d.dataset.theme=dk?'light':'dark'};
+load();
+</script>
+</body>
+</html>
