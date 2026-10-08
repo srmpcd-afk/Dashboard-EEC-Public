@@ -322,7 +322,7 @@ function aggregate(recs){
  const now=new Date(),keys=[],ml=[];
  for(let i=11;i>=0;i--){const d=new Date(now.getFullYear(),now.getMonth()-i,1);keys.push(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'));ml.push(MT[d.getMonth()])}
  const by={};PV.forEach(n=>by[n]={n,a:0,p:0,c:0,f:[0,0],fx:0,w:[0,0,0,0,0],m:Array(12).fill(0),ag:{},_am:new Set()});
- recs.forEach(r=>{const p=by[clean(r.prov)];if(!p){SKIP.push('แถว '+(r.row||'?')+': จังหวัด "'+clean(r.prov)+'" ไม่ตรงกับ 7 จังหวัด');return}
+ recs.forEach((r,ri)=>{const pn=clean(r.prov).replace(/^(จังหวัด|จ\.)\s*/,'').replace(/\s+/g,''),p=by[pn]||by[PV.find(n=>clean(r.agency).includes(n))];if(!p){SKIP.push('แถว '+(r.row||ri+2)+': จังหวัด "'+clean(r.prov)+'" ไม่ตรงกับ 7 จังหวัด');return}
   if(r.dump){p[bucket(r.status)]++;p.w[widx(r.waste)]++;const k=keys.indexOf(ym(r.date,recs));if(k>=0)p.m[k]++;
    const ag=clean(r.agency);if(ag)p.ag[ag]=(p.ag[ag]||0)+1;}
   {const am=clean(r.amphoe);if(am)p._am.add(am)}
@@ -370,7 +370,7 @@ function render(){
  $('fac').innerHTML=P.map((r,i)=>{const x=r.fx||1,o=Math.max(0,r.fx-r.f[0]-r.f[1]);return `<div class="row${dim(i)}"><span>${r.n}</span><div class="t" style="width:${100*r.fx/fm}%">${SEG(r.f[0],x,fm,'var(--acc)','#fff','ลำดับ 105')}${SEG(r.f[1],x,fm,'var(--lime)','#00262E','ลำดับ 106')}${SEG(o,x,fm,'color-mix(in srgb,var(--soft) 45%,transparent)','var(--ink)','อื่น ๆ')}</div><b>${r.fx}</b></div>`}).join('');
  drawMap();$('ins').innerHTML=insights(rs,a,p,c,T);$('insSub').textContent=sel<0?'ทั้ง 7 จังหวัด':'จังหวัด'+P[sel].n;$('mapSub').textContent=sel<0?'แตะจังหวัดเพื่อดูรายละเอียด':'กำลังดูจังหวัด'+P[sel].n+' · แตะซ้ำเพื่อยกเลิก';
 }
-$('chips').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;sel=+b.dataset.i;document.querySelectorAll('#chips button').forEach(x=>x.setAttribute('aria-pressed',x===b));render()});
+$('chips').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const i=+b.dataset.i;sel=(i>=0&&sel===i)?-1:i;document.querySelectorAll('#chips button').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.i===sel));render()});
 function heroViz(){DUMP=P.reduce((s,r)=>s+tot(r),0)}
 function heroCards(rs,p,T){const fx=rs.reduce((s,r)=>s+r.fx,0),am=rs.reduce((s,r)=>s+r.am,0),L=x=>x.toLocaleString('th-TH');
  $('heroN').textContent=L(T+fx);$('hF').textContent=L(fx);$('hD').textContent=L(T);$('hP').textContent=L(p);$('hA').textContent=L(am);
@@ -418,7 +418,7 @@ async function load(){
  if(!SHEET_ID)return setData(empty(),'ยังไม่มีข้อมูล');
  const base='https://docs.google.com/spreadsheets/d/'+SHEET_ID,
   srcs=[()=>viaCsv(base+'/gviz/tq?tqx=out:csv'+GQ),()=>viaCsv(base+'/export?format=csv'+GQ),()=>viaJsonp()];
- for(const g of srcs){try{const rows=await g();const recs=toRecs(rows);if(!recs.length)throw new Error('empty');const ag=aggregate(recs);setData(ag);if(SKIP.length){console.warn('แถวที่ไม่ถูกนับ:',SKIP);$('stat').textContent+=' · อ่าน '+(rows.length-1)+' แถว นับได้ '+(rows.length-1-SKIP.length)+' แถว (ข้าม '+SKIP.length+': '+SKIP.slice(0,3).join('; ')+(SKIP.length>3?' …':'')+')'}return}catch(e){console.warn('sheet source failed:',e&&e.message||e)}}
+ for(const g of srcs){try{const rows=await g();const recs=toRecs(rows);if(!recs.length)throw new Error('empty');const ag=aggregate(recs);setData(ag);console.warn('แถวที่ไม่ถูกนับ:',SKIP);$('stat').textContent+=' · อ่านจากชีตแรก '+(rows.length-1)+' แถว นับได้ '+(rows.length-1-SKIP.length)+' แถว'+(SKIP.length?' (ข้าม '+SKIP.length+': '+SKIP.slice(0,5).join('; ')+(SKIP.length>5?' …':'')+')':'');return}catch(e){console.warn('sheet source failed:',e&&e.message||e)}}
  setData(demo(),'เชื่อมต่อชีตไม่สำเร็จ · กำลังแสดงข้อมูลตัวอย่าง (ตรวจสอบว่าแชร์ชีตเป็น "ทุกคนที่มีลิงก์ ดูได้")')}
 $('map').addEventListener('click',e=>{const g=e.target.closest('.pv');if(g)pick(+g.dataset.i)});
 $('map').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const g=e.target.closest('.pv');if(g){e.preventDefault();pick(+g.dataset.i)}}});
